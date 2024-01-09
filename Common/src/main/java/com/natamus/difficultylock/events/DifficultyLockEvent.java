@@ -1,47 +1,40 @@
 package com.natamus.difficultylock.events;
 
 import com.natamus.difficultylock.config.ConfigHandler;
-
+import com.natamus.difficultylock.util.Util;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.level.storage.LevelData;
 import net.minecraft.world.level.storage.WorldData;
 
 public class DifficultyLockEvent {
-	public static void onWorldLoad(ServerLevel world) {
-		WorldData serverconfiguration = world.getServer().getWorldData();
-		
-		LevelData worldinfo = world.getLevelData();
-		boolean islocked = worldinfo.isDifficultyLocked();
-		if (islocked && !ConfigHandler.shouldChangeDifficultyWhenAlreadyLocked) {
+	public static void onClientTick(Minecraft mc) {
+		if (mc.screen instanceof CreateWorldScreen) {
+			Util.processScreenTick((CreateWorldScreen)mc.screen);
+		}
+	}
+
+	public static void onWorldLoad(ServerLevel serverLevel) {
+		WorldData worldData = serverLevel.getServer().getWorldData();
+
+		LevelData levelData = serverLevel.getLevelData();
+		boolean isLocked = levelData.isDifficultyLocked();
+		if (isLocked && !ConfigHandler.shouldChangeDifficultyWhenAlreadyLocked) {
 			return;
 		}
-		
-		Difficulty currentdifficulty = worldinfo.getDifficulty();
-		if (ConfigHandler.forcePeaceful) {
-			if (!currentdifficulty.equals(Difficulty.PEACEFUL)) {
-				serverconfiguration.setDifficulty(Difficulty.PEACEFUL);
-			}
+
+		Difficulty currentDifficulty = levelData.getDifficulty();
+		Difficulty newDifficulty = Util.getDifficultyFromConfig(currentDifficulty);
+
+		if (!currentDifficulty.equals(newDifficulty)) {
+			worldData.setDifficulty(newDifficulty);
 		}
-		else if (ConfigHandler.forceEasy) {
-			if (!currentdifficulty.equals(Difficulty.EASY)) {
-				serverconfiguration.setDifficulty(Difficulty.EASY);
-			}			
-		}
-		else if (ConfigHandler.forceNormal) {
-			if (!currentdifficulty.equals(Difficulty.NORMAL)) {
-				serverconfiguration.setDifficulty(Difficulty.NORMAL);
-			}			
-		}
-		else if (ConfigHandler.forceHard) {
-			if (!currentdifficulty.equals(Difficulty.HARD)) {
-				serverconfiguration.setDifficulty(Difficulty.HARD);
-			}			
-		}
-		
+
 		if (ConfigHandler.shouldLockDifficulty) {
-			if (!islocked) {
-				serverconfiguration.setDifficultyLocked(true);
+			if (!isLocked) {
+				worldData.setDifficultyLocked(true);
 			}
 		}
 	}
