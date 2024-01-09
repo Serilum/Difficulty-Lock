@@ -4,9 +4,9 @@ import com.natamus.collective.functions.WorldFunctions;
 import com.natamus.difficultylock.events.DifficultyLockEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod.EventBusSubscriber;
+import net.neoforged.neoforge.event.level.LevelEvent;
 
 @EventBusSubscriber
 public class NeoForgeDifficultyLockEvent {

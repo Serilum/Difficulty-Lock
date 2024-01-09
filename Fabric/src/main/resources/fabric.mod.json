@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "difficultylock",
-  "version": "3.2",
+  "version": "4.0",
 
   "name": "Difficulty Lock",
   "description": "Sets the difficulty to peaceful/easy/normal/hard in any (new) world, optionally locked.",
@@ -16,14 +16,17 @@
   "icon": "icon.png",
 
   "environment": "*",
-  "entrypoints": { "main": [ "com.natamus.difficultylock.ModFabric" ], "modmenu": [ "com.natamus.difficultylock.fabric.config.IntegrateModMenu" ] },
+  "entrypoints": { "main": [ "com.natamus.difficultylock.ModFabric" ], "client": [ "com.natamus.difficultylock.ModFabricClient" ], "modmenu": [ "com.natamus.difficultylock.fabric.config.IntegrateModMenu" ] },
+  "mixins": [
+    "difficultylock.mixins.json"
+  ],
 
   "depends": {
     "fabricloader": ">=0.12.5",
     "fabric": "*",
     "minecraft": ">=1.20",
     "java": ">=17",
-    "collective": ">=7.21"
+    "collective": ">=7.30"
   },
 
   "custom": {
@@ -41,18 +44,15 @@
 	  "If you would like to contribute too, check out https://ricksouth.com/donate.",
 	  " ",
 	  "Membership sponsors:",
-	  " Adam E",
 	  " Alister",
+	  " Andrean Olgo",
 	  " aternosorg",
 	  " Cherriesaurus",
-	  " FireStriker",
-	  " Greg Johnson",
 	  " Kreezxil",
 	  " Michael W. S.",
 	  " Mir3JonCZ",
 	  " Rebecca Hb.",
 	  " Shana Gitnick",
-	  " silver Bowsman",
 	  " Tyler Behl"
   ]
 }
