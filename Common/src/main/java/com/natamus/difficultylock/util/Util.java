@@ -28,7 +28,7 @@ public class Util {
 		actuallySetDifficulty(createWorldScreen);
 	}
 
-	public static Difficulty getDifficultyFromConfig(Difficulty initialDifficulty) {
+	public static Difficulty getDifficultyFromConfig() {
 		boolean forceHardcoreMode = ConfigHandler.forceHardcoreMode;
 		if (ConfigHandler.forcePeaceful && !forceHardcoreMode) {
 			return Difficulty.PEACEFUL;
@@ -42,7 +42,11 @@ public class Util {
 		else if (ConfigHandler.forceHard ||  forceHardcoreMode) {
 			return Difficulty.HARD;
 		}
-		return initialDifficulty;
+		return null;
+	}
+
+	public static boolean hasADifficultyEnabledInConfig() {
+		return ConfigHandler.forcePeaceful || ConfigHandler.forceEasy || ConfigHandler.forceNormal || ConfigHandler.forceHard || ConfigHandler.forceHardcoreMode;
 	}
 
 	public static void setCreateWorldScreenDifficulty(Screen screen) {
@@ -86,14 +90,14 @@ public class Util {
 				selectedGameMode = SelectedGameMode.SURVIVAL;
 			}
 
-			Difficulty newDifficulty = getDifficultyFromConfig(Difficulty.NORMAL);
+			Difficulty newDifficulty = getDifficultyFromConfig();
 
-			if (!uiState.getDifficulty().equals(newDifficulty)) {
+			if (newDifficulty != null && !uiState.getDifficulty().equals(newDifficulty)) {
 				buttonUpdatesLeft = 3;
 				uiState.setDifficulty(newDifficulty);
 			}
 
-			if (difficultyButton.active) {
+			if (difficultyButton.active && hasADifficultyEnabledInConfig()) {
 				difficultyButton.active = false;
 			}
 
