@@ -1,7 +1,7 @@
 package com.natamus.difficultylock.neoforge.events;
 
-import com.natamus.difficultylock.data.Constants;
 import com.natamus.difficultylock.events.DifficultyLockEvent;
+import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -15,6 +15,6 @@ public class NeoForgeDifficultyLockClientEvent {
 			return;
 		}
 
-		DifficultyLockEvent.onClientTick(Constants.mc);
+		DifficultyLockEvent.onClientTick(Minecraft.getInstance());
 	}
 }

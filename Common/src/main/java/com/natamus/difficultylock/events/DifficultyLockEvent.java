@@ -26,9 +26,9 @@ public class DifficultyLockEvent {
 		}
 
 		Difficulty currentDifficulty = levelData.getDifficulty();
-		Difficulty newDifficulty = Util.getDifficultyFromConfig(currentDifficulty);
+		Difficulty newDifficulty = Util.getDifficultyFromConfig();
 
-		if (!currentDifficulty.equals(newDifficulty)) {
+		if (newDifficulty != null && !currentDifficulty.equals(newDifficulty)) {
 			worldData.setDifficulty(newDifficulty);
 		}
 
