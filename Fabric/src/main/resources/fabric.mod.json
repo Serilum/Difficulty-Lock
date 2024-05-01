@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "difficultylock",
+  "version": "4.2",
+
+  "name": "Difficulty Lock",
+  "description": "Sets the difficulty to peaceful/easy/normal/hard in any (new) world, optionally locked.",
+  "authors": [ "Rick South" ],
+  "contact": {
+    "homepage": "https://serilum.com/mod/difficulty-lock",
+    "sources": "https://github.com/Serilum/Difficulty-Lock",
+    "issues": "https://github.com/Serilum/.issue-tracker/labels/Mod:%20Difficulty%20Lock"
+  },
+
+  "license": "All Right Reserved",
+  "icon": "icon.png",
+
+  "environment": "*",
+  "entrypoints": { "main": [ "com.natamus.difficultylock.ModFabric" ], "client": [ "com.natamus.difficultylock.ModFabricClient" ], "modmenu": [ "com.natamus.difficultylock.fabric.config.IntegrateModMenu" ] },
+  "mixins": [
+    "difficultylock.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric": "*",
+    "minecraft": ">=1.20",
+    "java": ">=21",
+    "collective": ">=7.55"
+  },
+
+  "custom": {
+    "modmenu": {
+      "links": {
+        "Donate <3" : "https://ricksouth.com/donate"
+      }
+    }
+  },
+
+  "contributors": [
+	  " ",
+	  "Thank you very much to my Membership sponsors for supporting the development of this mod!",
+	  " ",
+	  "If you would like to contribute too, check out https://serilum.com/donate.",
+	  " ",
+	  "Membership sponsors:",
+	  " Alister",
+	  " Andrean Olgo",
+	  " aternosorg",
+	  " BirdieMiner",
+	  " Cherriesaurus",
+	  " Jack",
+	  " Jeremy Langford",
+	  " Michael W. S.",
+	  " pepe1191",
+	  " Shana Gitnick",
+	  " Tyler Behl"
+  ]
+}
