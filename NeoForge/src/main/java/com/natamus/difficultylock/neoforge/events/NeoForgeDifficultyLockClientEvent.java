@@ -10,7 +10,7 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 @EventBusSubscriber(value = Dist.CLIENT)
 public class NeoForgeDifficultyLockClientEvent {
 	@SubscribeEvent
-	public void onClientTick(ClientTickEvent.Post e) {
+	public static void onClientTick(ClientTickEvent.Post e) {
 		DifficultyLockEvent.onClientTick(Minecraft.getInstance());
 	}
 }

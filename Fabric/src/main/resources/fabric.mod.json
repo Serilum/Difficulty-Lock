@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "difficultylock",
-  "version": "4.2",
+  "version": "4.3",
 
   "name": "Difficulty Lock",
   "description": "Sets the difficulty to peaceful/easy/normal/hard in any (new) world, optionally locked.",
