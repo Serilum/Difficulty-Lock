@@ -6,7 +6,7 @@ logoFile="icon.png"
 
 [[mods]]
 modId="difficultylock"
-version="4.3"
+version="4.4"
 displayName="Difficulty Lock"
 displayURL="https://serilum.com/mod/difficulty-lock"
 authors="Rick South"
@@ -22,7 +22,7 @@ If you would like to contribute too, check out https://serilum.com/donate. Appre
 [[dependencies.difficultylock]]
     modId="collective"
     mandatory=true
-    versionRange="[7.55,)"
+    versionRange="[7.56,)"
     ordering="NONE"
     side="BOTH"
 

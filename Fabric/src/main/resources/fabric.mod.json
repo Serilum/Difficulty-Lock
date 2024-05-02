@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "difficultylock",
-  "version": "4.3",
+  "version": "4.4",
 
   "name": "Difficulty Lock",
   "description": "Sets the difficulty to peaceful/easy/normal/hard in any (new) world, optionally locked.",
@@ -26,7 +26,7 @@
     "fabric": "*",
     "minecraft": ">=1.20",
     "java": ">=21",
-    "collective": ">=7.55"
+    "collective": ">=7.56"
   },
 
   "custom": {
