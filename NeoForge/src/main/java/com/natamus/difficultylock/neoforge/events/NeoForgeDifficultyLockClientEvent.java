@@ -10,7 +10,7 @@ import net.neoforged.neoforge.event.TickEvent;
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class NeoForgeDifficultyLockClientEvent {
 	@SubscribeEvent
-	public void onClientTick(TickEvent.ClientTickEvent e) {
+	public static void onClientTick(TickEvent.ClientTickEvent e) {
 		if (!e.phase.equals(TickEvent.Phase.END)) {
 			return;
 		}
