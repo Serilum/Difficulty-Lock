@@ -1,6 +1,7 @@
 package com.natamus.difficultylock;
 
 import com.natamus.collective.check.RegisterMod;
+import com.natamus.collective.check.ShouldLoadCheck;
 import com.natamus.difficultylock.forge.config.IntegrateForgeConfig;
 import com.natamus.difficultylock.forge.events.ForgeDifficultyLockClientEvent;
 import com.natamus.difficultylock.forge.events.ForgeDifficultyLockEvent;
@@ -18,6 +19,10 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 public class ModForge {
 	
 	public ModForge() {
+		if (!ShouldLoadCheck.shouldLoad(Reference.MOD_ID)) {
+			return;
+		}
+
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		modEventBus.addListener(this::loadComplete);
 
