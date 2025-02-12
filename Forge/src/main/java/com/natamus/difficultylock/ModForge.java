@@ -35,10 +35,10 @@ public class ModForge {
 	}
 
 	private void loadComplete(final FMLLoadCompleteEvent event) {
-    	MinecraftForge.EVENT_BUS.register(new ForgeDifficultyLockEvent());
+    	MinecraftForge.EVENT_BUS.register(ForgeDifficultyLockEvent.class);
 
 		if (FMLEnvironment.dist.equals(Dist.CLIENT)) {
-			MinecraftForge.EVENT_BUS.register(new ForgeDifficultyLockClientEvent());
+			MinecraftForge.EVENT_BUS.register(ForgeDifficultyLockClientEvent.class);
 		}
 	}
 
