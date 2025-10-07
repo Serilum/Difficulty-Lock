@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.natamus.difficultylock.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+	"DedicatedServerPropertiesMixin"
+  ],
+  "client": [
+	"CreateWorldScreenMixin",
+	"CycleButtonMixin",
+	"WorldCreationUiStateMixin"
+  ],
+  "server": [
+  ],
+  "injectors": {
+	"defaultRequire": 1
+  }
+}
