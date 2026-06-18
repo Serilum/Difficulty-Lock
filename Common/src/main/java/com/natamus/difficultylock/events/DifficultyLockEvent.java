@@ -11,8 +11,8 @@ import net.minecraft.world.level.storage.WorldData;
 
 public class DifficultyLockEvent {
 	public static void onClientTick(Minecraft mc) {
-		if (mc.screen instanceof CreateWorldScreen) {
-			Util.processScreenTick((CreateWorldScreen)mc.screen);
+		if (mc.gui.screen()instanceof CreateWorldScreen) {
+			Util.processScreenTick((CreateWorldScreen)mc.gui.screen());
 		}
 	}
 

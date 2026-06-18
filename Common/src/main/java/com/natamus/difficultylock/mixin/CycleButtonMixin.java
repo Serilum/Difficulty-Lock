@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 public class CycleButtonMixin {
     @Inject(method = "<init>(IIIILnet/minecraft/network/chat/Component;Lnet/minecraft/network/chat/Component;ILjava/lang/Object;Ljava/util/function/Supplier;Lnet/minecraft/client/gui/components/CycleButton$ValueListSupplier;Ljava/util/function/Function;Ljava/util/function/Function;Lnet/minecraft/client/gui/components/CycleButton$OnValueChange;Lnet/minecraft/client/OptionInstance$TooltipSupplier;Lnet/minecraft/client/gui/components/CycleButton$DisplayState;Lnet/minecraft/client/gui/components/CycleButton$SpriteSupplier;)V", at = @At(value = "TAIL"))
     public void CycleButton(int i, int j, int k, int l, Component component, Component name, int index, Object object, Supplier<?> defaultValueSupplier, CycleButton.ValueListSupplier<?> valueListSupplier, Function<?, ?> fI, Function<?, ?> fJ, CycleButton.OnValueChange<?> onValueChange, OptionInstance.TooltipSupplier<?> tooltipSupplier, CycleButton.DisplayState displayState, CycleButton.SpriteSupplier<?> spriteSupplier, CallbackInfo ci) {
-		if (Minecraft.getInstance().screen instanceof CreateWorldScreen) {
+		if (Minecraft.getInstance().gui.screen() instanceof CreateWorldScreen) {
 			CycleButton<?> cycleButton = (CycleButton<?>)(Object)this;
 			String nameString = name.getString();
 

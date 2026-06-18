@@ -17,11 +17,11 @@ import java.nio.file.Path;
 public class CreateWorldScreenMixin {
 	@Inject(method = "createFromExisting(Lnet/minecraft/client/Minecraft;Ljava/lang/Runnable;Lnet/minecraft/world/level/LevelSettings;Lnet/minecraft/client/gui/screens/worldselection/WorldCreationContext;Ljava/nio/file/Path;)Lnet/minecraft/client/gui/screens/worldselection/CreateWorldScreen;", at = @At(value = "RETURN"))
 	private static void createFromExisting(Minecraft mc, Runnable runnable, LevelSettings levelSettings, WorldCreationContext worldCreationContext, Path path, CallbackInfoReturnable<CreateWorldScreen> cir) {
-		Util.setCreateWorldScreenDifficulty(mc.screen);
+		Util.setCreateWorldScreenDifficulty(mc.gui.screen());
 	}
 
 	@Inject(method = "openFresh(Lnet/minecraft/client/Minecraft;Ljava/lang/Runnable;)V", at = @At(value = "TAIL"))
 	private static void openFresh(Minecraft mc, Runnable runnable, CallbackInfo ci) {
-		Util.setCreateWorldScreenDifficulty(mc.screen);
+		Util.setCreateWorldScreenDifficulty(mc.gui.screen());
 	}
 }

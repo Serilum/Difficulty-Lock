@@ -2,7 +2,6 @@ package com.natamus.difficultylock.forge.events;
 
 import com.natamus.difficultylock.events.DifficultyLockEvent;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
