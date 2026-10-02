@@ -1,9 +1,9 @@
-package com.natamus.difficultylock;
+package com.serilum.difficultylock;
 
 import com.natamus.collective.check.RegisterMod;
 import com.natamus.collective.check.ShouldLoadCheck;
-import com.natamus.difficultylock.events.DifficultyLockEvent;
-import com.natamus.difficultylock.util.Reference;
+import com.serilum.difficultylock.events.DifficultyLockEvent;
+import com.serilum.difficultylock.util.Reference;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.minecraft.server.MinecraftServer;

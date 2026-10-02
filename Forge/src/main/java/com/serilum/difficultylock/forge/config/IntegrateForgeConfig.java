@@ -1,7 +1,7 @@
-package com.natamus.difficultylock.forge.config;
+package com.serilum.difficultylock.forge.config;
 
 import com.natamus.collective.config.DuskConfig;
-import com.natamus.difficultylock.util.Reference;
+import com.serilum.difficultylock.util.Reference;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModLoadingContext;
 

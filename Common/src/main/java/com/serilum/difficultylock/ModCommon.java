@@ -1,6 +1,6 @@
-package com.natamus.difficultylock;
+package com.serilum.difficultylock;
 
-import com.natamus.difficultylock.config.ConfigHandler;
+import com.serilum.difficultylock.config.ConfigHandler;
 
 public class ModCommon {
 

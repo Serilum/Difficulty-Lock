@@ -1,6 +1,6 @@
-package com.natamus.difficultylock.mixin;
+package com.serilum.difficultylock.mixin;
 
-import com.natamus.difficultylock.util.Util;
+import com.serilum.difficultylock.util.Util;
 import net.minecraft.client.gui.screens.worldselection.WorldCreationUiState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,7 +23,7 @@ public class WorldCreationUiStateMixin {
 		boolean allowOnce = true;
 
 		while (var3.hasNext()) {
-            Consumer<WorldCreationUiState> consumer = (Consumer)var3.next();
+			Consumer<WorldCreationUiState> consumer = (Consumer)var3.next();
 			if (consumer.toString().contains("GameTab")) {
 				if (Util.buttonUpdatesLeft < 0) {
 					if (!allowOnce) {
@@ -35,8 +35,8 @@ public class WorldCreationUiStateMixin {
 				Util.buttonUpdatesLeft-=1;
 			}
 
-            consumer.accept((WorldCreationUiState)(Object)this);
-        }
+			consumer.accept((WorldCreationUiState)(Object)this);
+		}
 
 		ci.cancel();
 	}

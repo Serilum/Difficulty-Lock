@@ -1,6 +1,6 @@
-package com.natamus.difficultylock.mixin;
+package com.serilum.difficultylock.mixin;
 
-import com.natamus.difficultylock.config.ConfigHandler;
+import com.serilum.difficultylock.config.ConfigHandler;
 import net.minecraft.server.dedicated.DedicatedServerProperties;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

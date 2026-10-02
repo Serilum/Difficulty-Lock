@@ -1,7 +1,7 @@
-package com.natamus.difficultylock.config;
+package com.serilum.difficultylock.config;
 
 import com.natamus.collective.config.DuskConfig;
-import com.natamus.difficultylock.util.Reference;
+import com.serilum.difficultylock.util.Reference;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,11 +1,11 @@
-package com.natamus.difficultylock;
+package com.serilum.difficultylock;
 
 import com.natamus.collective.check.RegisterMod;
 import com.natamus.collective.check.ShouldLoadCheck;
-import com.natamus.difficultylock.forge.config.IntegrateForgeConfig;
-import com.natamus.difficultylock.forge.events.ForgeDifficultyLockClientEvent;
-import com.natamus.difficultylock.forge.events.ForgeDifficultyLockEvent;
-import com.natamus.difficultylock.util.Reference;
+import com.serilum.difficultylock.forge.config.IntegrateForgeConfig;
+import com.serilum.difficultylock.forge.events.ForgeDifficultyLockClientEvent;
+import com.serilum.difficultylock.forge.events.ForgeDifficultyLockEvent;
+import com.serilum.difficultylock.util.Reference;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -35,7 +35,7 @@ public class ModForge {
 	}
 
 	private void loadComplete(final FMLLoadCompleteEvent event) {
-    	MinecraftForge.EVENT_BUS.register(ForgeDifficultyLockEvent.class);
+		MinecraftForge.EVENT_BUS.register(ForgeDifficultyLockEvent.class);
 
 		if (FMLEnvironment.dist.equals(Dist.CLIENT)) {
 			MinecraftForge.EVENT_BUS.register(ForgeDifficultyLockClientEvent.class);

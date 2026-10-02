@@ -1,7 +1,7 @@
-package com.natamus.difficultylock.events;
+package com.serilum.difficultylock.events;
 
-import com.natamus.difficultylock.config.ConfigHandler;
-import com.natamus.difficultylock.util.Util;
+import com.serilum.difficultylock.config.ConfigHandler;
+import com.serilum.difficultylock.util.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
 import net.minecraft.server.level.ServerLevel;

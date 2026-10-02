@@ -1,6 +1,6 @@
-package com.natamus.difficultylock.mixin;
+package com.serilum.difficultylock.mixin;
 
-import com.natamus.difficultylock.util.Util;
+import com.serilum.difficultylock.util.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.gui.components.CycleButton;

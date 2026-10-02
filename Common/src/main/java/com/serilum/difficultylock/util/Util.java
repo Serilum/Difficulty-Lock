@@ -1,6 +1,6 @@
-package com.natamus.difficultylock.util;
+package com.serilum.difficultylock.util;
 
-import com.natamus.difficultylock.config.ConfigHandler;
+import com.serilum.difficultylock.config.ConfigHandler;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;

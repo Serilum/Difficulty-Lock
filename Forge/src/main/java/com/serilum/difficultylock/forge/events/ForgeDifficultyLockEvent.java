@@ -1,7 +1,7 @@
-package com.natamus.difficultylock.forge.events;
+package com.serilum.difficultylock.forge.events;
 
 import com.natamus.collective.functions.WorldFunctions;
-import com.natamus.difficultylock.events.DifficultyLockEvent;
+import com.serilum.difficultylock.events.DifficultyLockEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.level.LevelEvent;
