@@ -27,7 +27,7 @@ public class CycleButtonMixin {
 			else if (nameString.equals(Component.translatable("options.difficulty").getString())) {
 				Util.difficultyButton = cycleButton;
 			}
-			else if (nameString.equals(Component.translatable("selectWorld.allowCommands").getString())) {
+			else if (nameString.equals(Component.translatable("selectWorld.allowCommands.new").getString())) {
 				Util.allowCheatsButton = cycleButton;
 			}
 		}

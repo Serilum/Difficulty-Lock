@@ -2,29 +2,17 @@ package com.serilum.difficultylock.util;
 
 import com.serilum.difficultylock.config.ConfigHandler;
 import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
 import net.minecraft.client.gui.screens.worldselection.WorldCreationUiState;
 import net.minecraft.client.gui.screens.worldselection.WorldCreationUiState.SelectedGameMode;
 import net.minecraft.world.Difficulty;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class Util {
-	public static int buttonUpdatesLeft = 3;
 	public static CycleButton<?> gameModeButton = null;
 	public static CycleButton<?> difficultyButton = null;
 	public static CycleButton<?> allowCheatsButton = null;
-	private static SelectedGameMode lastSelectedGameMode = null;
 
 	public static void processScreenTick(CreateWorldScreen createWorldScreen) {
-		WorldCreationUiState uiState = createWorldScreen.getUiState();
-		if (!uiState.getGameMode().equals(lastSelectedGameMode)) {
-			buttonUpdatesLeft = 3;
-			lastSelectedGameMode = uiState.getGameMode();
-		}
-
 		actuallySetDifficulty(createWorldScreen);
 	}
 
@@ -49,33 +37,22 @@ public class Util {
 		return ConfigHandler.forcePeaceful || ConfigHandler.forceEasy || ConfigHandler.forceNormal || ConfigHandler.forceHard || ConfigHandler.forceHardcoreMode;
 	}
 
-	public static void setCreateWorldScreenDifficulty(Screen screen) {
-		delaySettingDifficulty(screen);
+	public static SelectedGameMode getAllowedGameMode(SelectedGameMode currentGameMode, SelectedGameMode newGameMode) {
+		if (!ConfigHandler.disableCreativeModeSelection || !newGameMode.equals(SelectedGameMode.CREATIVE)) {
+			return newGameMode;
+		}
+
+		if (currentGameMode.equals(SelectedGameMode.SURVIVAL)) {
+			return SelectedGameMode.HARDCORE;
+		}
+		return SelectedGameMode.SURVIVAL;
 	}
 
-	private static void delaySettingDifficulty(Screen screen) {
-		new Timer().schedule(
-			new TimerTask() {
-				@Override
-				public void run() {
-					if (screen instanceof CreateWorldScreen) {
-						actuallySetDifficulty((CreateWorldScreen)screen);
-					}
-				}
-			}, 1
-		);
-	}
-
-	private static void actuallySetDifficulty(CreateWorldScreen createWorldScreen) {
+	public static void actuallySetDifficulty(CreateWorldScreen createWorldScreen) {
 		WorldCreationUiState uiState = createWorldScreen.getUiState();
 		if (ConfigHandler.forceHardcoreMode) {
 			if (!uiState.getGameMode().equals(SelectedGameMode.HARDCORE)) {
-				buttonUpdatesLeft = 3;
 				uiState.setGameMode(SelectedGameMode.HARDCORE);
-			}
-
-			if (gameModeButton.active) {
-				gameModeButton.active = false;
 			}
 		}
 		else {
@@ -85,7 +62,6 @@ public class Util {
 			}
 
 			if (ConfigHandler.disableCreativeModeSelection && selectedGameMode.equals(SelectedGameMode.CREATIVE)) {
-				buttonUpdatesLeft = 3;
 				uiState.setGameMode(SelectedGameMode.SURVIVAL);
 				selectedGameMode = SelectedGameMode.SURVIVAL;
 			}
@@ -93,24 +69,31 @@ public class Util {
 			Difficulty newDifficulty = getDifficultyFromConfig();
 
 			if (newDifficulty != null && !uiState.getDifficulty().equals(newDifficulty)) {
-				buttonUpdatesLeft = 3;
 				uiState.setDifficulty(newDifficulty);
-			}
-
-			if (difficultyButton.active && hasADifficultyEnabledInConfig()) {
-				difficultyButton.active = false;
 			}
 
 			if (ConfigHandler.forceCheatsDisabled && selectedGameMode.equals(SelectedGameMode.SURVIVAL)) {
 				if (uiState.isAllowCommands()) {
-					buttonUpdatesLeft = 3;
 					uiState.setAllowCommands(false);
 				}
-
-				if (allowCheatsButton.active) {
-					allowCheatsButton.active = false;
-				}
 			}
+		}
+	}
+
+	public static void updateButtonStates(WorldCreationUiState uiState) {
+		if (ConfigHandler.forceHardcoreMode) {
+			if (gameModeButton != null) {
+				gameModeButton.active = false;
+			}
+			return;
+		}
+
+		if (difficultyButton != null && hasADifficultyEnabledInConfig()) {
+			difficultyButton.active = false;
+		}
+
+		if (allowCheatsButton != null && ConfigHandler.forceCheatsDisabled && uiState.getGameMode().equals(SelectedGameMode.SURVIVAL)) {
+			allowCheatsButton.active = false;
 		}
 	}
 }
