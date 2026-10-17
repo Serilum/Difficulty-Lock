@@ -7,6 +7,8 @@ import net.minecraft.client.gui.screens.worldselection.WorldCreationUiState;
 import net.minecraft.client.gui.screens.worldselection.WorldCreationUiState.SelectedGameMode;
 import net.minecraft.world.Difficulty;
 
+import java.util.Locale;
+
 public class Util {
 	public static CycleButton<?> gameModeButton = null;
 	public static CycleButton<?> difficultyButton = null;
@@ -17,24 +19,14 @@ public class Util {
 	}
 
 	public static Difficulty getDifficultyFromConfig() {
-		boolean forceHardcoreMode = ConfigHandler.forceHardcoreMode;
-		if (ConfigHandler.forcePeaceful && !forceHardcoreMode) {
-			return Difficulty.PEACEFUL;
-		}
-		else if (ConfigHandler.forceEasy && !forceHardcoreMode) {
-			return Difficulty.EASY;
-		}
-		else if (ConfigHandler.forceNormal && !forceHardcoreMode) {
-			return Difficulty.NORMAL;
-		}
-		else if (ConfigHandler.forceHard ||  forceHardcoreMode) {
+		if (ConfigHandler.forceHardcoreMode) {
 			return Difficulty.HARD;
 		}
-		return null;
+		return Difficulty.byName(ConfigHandler.forcedDifficulty.toLowerCase(Locale.ROOT));
 	}
 
 	public static boolean hasADifficultyEnabledInConfig() {
-		return ConfigHandler.forcePeaceful || ConfigHandler.forceEasy || ConfigHandler.forceNormal || ConfigHandler.forceHard || ConfigHandler.forceHardcoreMode;
+		return getDifficultyFromConfig() != null;
 	}
 
 	public static SelectedGameMode getAllowedGameMode(SelectedGameMode currentGameMode, SelectedGameMode newGameMode) {
